@@ -1,22 +1,22 @@
-# timweb-api-clojure
+# API for TIM Group implemented in Clojure
 
-A Clojure library designed to ... well, that part is up to you.
+Experimental implementation of an API in Clojure ecosystem. For learning purposes.
 
 ## Usage
 
-FIXME
+- Have JVM, Clojure and Leiningen installed
+- Have Postgres database installed and configured
+- Run the REPL and start the server with `(server)`
 
-## License
+## How to configure the database
 
-Copyright © 2020 FIXME
+- Create `resources/config.edn` file
+- Have the following db connection properties:
 
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+```clojure
+{:username      "your-db-username"
+ :password      "your-db-password
+ :port-number   5432
+ :database-name "your-db-name"
+ :server-name   "localhost"}
+```
