@@ -13,6 +13,19 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
 - Create `resources/config.edn` file
 - Have the following db connection properties:
 
+## Roadmap
+- DONE Try reading from DB
+- DONE Try Routing
+- DONE Try JSON response
+- TODO Try authentication with Auth0
+- TODO Try spec
+- TODO Try unit tests
+- TODO Try insering, updating and deleting
+- TODO Dockerize
+- TODO CI/CD
+- TODO Swagger
+- TODO Implement all requests
+
 ```clojure
 {:username      "your-db-username"
  :password      "your-db-password
