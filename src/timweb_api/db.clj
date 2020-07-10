@@ -1,7 +1,8 @@
 (ns timweb-api.db
   "Database config and operations"
   (:require [clojure.java.jdbc :as jdbc]
-            [hikari-cp.core :as cp]))
+            [hikari-cp.core :as cp]
+            [honeysql.core :as sql]))
 
 (def datasource-options
   {:username           "denis.rodionov"
@@ -29,4 +30,6 @@
 (defn all-brands
   "Retrieves all brands from the database"
   []
-  (jdbc/query database-connection ["SELECT id, name_ru, name_en, logo FROM brands;"]))
+  (let [sqlmap {:select [:id :name_ru :name_en]
+                :from [:brands]}]
+    (jdbc/query database-connection (sql/format sqlmap))))

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: honeysql:1.0.444">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/honeysql/honeysql/1.0.444/honeysql-1.0.444.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

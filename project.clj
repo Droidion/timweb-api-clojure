@@ -11,5 +11,6 @@
                  [metosin/reitit-ring "0.5.2"]
                  [org.clojure/java.jdbc "0.7.11"]
                  [org.postgresql/postgresql "42.2.14.jre7"]
-                 [hikari-cp "2.12.0"]]
+                 [hikari-cp "2.12.0"]
+                 [honeysql "1.0.444"]]
   :repl-options {:init-ns timweb-api.core})
