@@ -1,7 +1,7 @@
-(ns timweb-api-clojure.core-test
+(ns timweb-api.core-test
   (:require [clojure.test :refer :all]
-            [timweb-api-clojure.core :refer :all]))
+            [timweb-api.core :refer :all]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "Dummy test"
+    (is (= 1 1))))
