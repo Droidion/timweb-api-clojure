@@ -8,30 +8,33 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
 - Set up database connection like that:
 
 ```clojure
-{:username      "your-db-username"
- :password      "your-db-password"
- :port-number   5432
- :database-name "your-db-name"
- :server-name   "host.docker.internal"}
+{:db {:username      "denis.rodionov"
+      :password      ""
+      :port-number   5432
+      :database-name "tim"
+      :server-name   "localhost"}
+ :server {:port 7888}}
 ```
 
-Mind that you if use the port other than 5432, you should change it in `docker-compose.yml`. 
+Mind that if you use the port other than 5432, you should change it in `docker-compose.yml`. 
 
 ## Usage
 
 ### Docker
 
 - Have docker and docker-compose installed
+- Have server port configured in `resources/config.edn`
 - Have database connection configured in `resources/config.edn`
 - `$ docker-compose up -d`
-- API is available on port `7888`.
+- API is available on port you specified in the config.
 
 ### Run manually
 
 - Have JVM, Clojure and Leiningen installed
+- Have server port configured in `resources/config.edn`
 - Have Postgres database installed and configured in `resources/config.edn`
 - Run
-- API is available on port `7888`.
+- API is available on port you specified in the config.
 
 ```
 $ lein deps

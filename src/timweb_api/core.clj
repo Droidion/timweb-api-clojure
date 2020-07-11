@@ -2,7 +2,8 @@
   (:require [ring.adapter.jetty :refer [run-jetty]]
             [reitit.ring :as r]
             [timweb-api.router :as router]
-            [mount.core :as mount])
+            [mount.core :as mount]
+            [timweb-api.config :refer [server-config]])
   (:gen-class))
 
 (def app
@@ -16,8 +17,9 @@
   "Starts ring web server"
   []
   (mount/start)
-  (println "Starting web server on port 7888")
-  (run-jetty app {:join? false :port 7888}))
+  (let [port (get server-config :port)]
+    (println (format "Starting web server on port %s" port))
+    (run-jetty app {:join? false :port port})))
 
 (defn -main
   "Starts the program"

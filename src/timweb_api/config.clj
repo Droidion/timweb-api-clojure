@@ -23,14 +23,14 @@
   []
   (aero/read-config (clojure.java.io/resource "config.edn")))
 
-(defn- construct-config
+(defn- construct-db-config
   "Merges config loaded from file with the default config"
   []
-  (merge default-db-options (read-config)))
+  (merge default-db-options (get (read-config) :db)))
 
 ;; Create HikariCP connection pool
 (defonce datasource
-         (delay (cp/make-datasource (construct-config))))
+         (delay (cp/make-datasource (construct-db-config))))
 
 (defn- get-conn
   "Returns db connection as connection pool"
@@ -39,3 +39,6 @@
 
 ;; db connection in state
 (defstate db-conn :start (get-conn))
+
+;; server config in state
+(defstate server-config :start (get (read-config) :server))
