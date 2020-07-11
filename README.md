@@ -13,6 +13,14 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
 - Create `resources/config.edn` file
 - Have the following db connection properties:
 
+```clojure
+{:username      "your-db-username"
+ :password      "your-db-password"
+ :port-number   5432
+ :database-name "your-db-name"
+ :server-name   "localhost"}
+```
+
 ## Roadmap
 - DONE Try reading from DB
 - DONE Try Routing
@@ -25,11 +33,3 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
 - TODO CI/CD
 - TODO Swagger
 - TODO Implement all requests
-
-```clojure
-{:username      "your-db-username"
- :password      "your-db-password
- :port-number   5432
- :database-name "your-db-name"
- :server-name   "localhost"}
-```
