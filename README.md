@@ -46,7 +46,7 @@ $ lein run
 - TODO Try authentication with Auth0
 - TODO Try spec
 - TODO Try unit tests
-- TODO Try insering, updating and deleting
+- TODO Try inserting, updating and deleting
 - TODO CI/CD
 - TODO Swagger
 - TODO Implement all requests
