@@ -1,0 +1,7 @@
+version: '3'
+services:
+  timweb-api-clojure:
+    build: .
+    ports:
+      - '7888:7888'
+      - '5432:5432'

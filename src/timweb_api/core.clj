@@ -16,8 +16,8 @@
   "Starts ring web server"
   []
   (mount/start)
-  (println "Starting web server on port 8080")
-  (run-jetty app {:join? false :port 8080}))
+  (println "Starting web server on port 7888")
+  (run-jetty app {:join? false :port 7888}))
 
 (defn -main
   "Starts the program"

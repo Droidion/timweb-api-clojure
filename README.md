@@ -2,34 +2,51 @@
 
 Experimental implementation of an API in Clojure ecosystem. For learning purposes.
 
-## Usage
-
-- Have JVM, Clojure and Leiningen installed
-- Have Postgres database installed and configured
-- Run the REPL and start the server with `(server)`
-
-## How to configure the database
+## Configuration
 
 - Create `resources/config.edn` file
-- Have the following db connection properties:
+- Set up database connection like that:
 
 ```clojure
 {:username      "your-db-username"
  :password      "your-db-password"
  :port-number   5432
  :database-name "your-db-name"
- :server-name   "localhost"}
+ :server-name   "host.docker.internal"}
+```
+
+Mind that you if use the port other than 5432, you should change it in `docker-compose.yml`. 
+
+## Usage
+
+### Docker
+
+- Have docker and docker-compose installed
+- Have database connection configured in `resources/config.edn`
+- `$ docker-compose up -d`
+- API is available on port `7888`.
+
+### Run manually
+
+- Have JVM, Clojure and Leiningen installed
+- Have Postgres database installed and configured in `resources/config.edn`
+- Run
+- API is available on port `7888`.
+
+```
+$ lein deps
+$ lein run
 ```
 
 ## Roadmap
 - DONE Try reading from DB
 - DONE Try Routing
 - DONE Try JSON response
+- DONE Dockerize
 - TODO Try authentication with Auth0
 - TODO Try spec
 - TODO Try unit tests
 - TODO Try insering, updating and deleting
-- TODO Dockerize
 - TODO CI/CD
 - TODO Swagger
 - TODO Implement all requests
