@@ -16,7 +16,7 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
  :server {:port 7888}}
 ```
 
-Mind that if you use the port other than 5432, you should change it in `docker-compose.yml`. 
+Mind that if you use the port other than 5432 for the database or other than 7888 for the web server, you should change it in `docker-compose.yml` and `Dockerfile`. 
 
 ## Usage
 
