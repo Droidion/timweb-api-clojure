@@ -17,7 +17,7 @@
   "Starts ring web server"
   []
   (mount/start)
-  (let [port (get server-config :port)]
+  (let [port (:port server-config)]
     (println (format "Starting web server on port %s" port))
     (run-jetty app {:join? false :port port})))
 

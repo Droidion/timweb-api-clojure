@@ -26,7 +26,7 @@
 (defn- construct-db-config
   "Merges config loaded from file with the default config"
   []
-  (merge default-db-options (get (read-config) :db)))
+  (merge default-db-options (:db (read-config))))
 
 ;; Create HikariCP connection pool
 (defonce datasource
@@ -41,4 +41,4 @@
 (defstate db-conn :start (get-conn))
 
 ;; server config in state
-(defstate server-config :start (get (read-config) :server))
+(defstate server-config :start (:server (read-config)))
