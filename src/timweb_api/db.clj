@@ -10,3 +10,11 @@
   (let [sqlmap {:select [:id :name_ru :name_en]
                 :from   [:brands]}]
     (jdbc/query db-conn (sql/format sqlmap))))
+
+(defn user-by-login
+  "Retrieves user by login"
+  [login]
+  (let [sqlmap {:select [:id :login :password]
+                :from   [:users]
+                :where  [:= :login login]}]
+    (jdbc/query db-conn (sql/format sqlmap))))

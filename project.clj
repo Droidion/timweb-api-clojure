@@ -16,5 +16,6 @@
                  [honeysql "1.0.444"]
                  [aero "1.1.6"]
                  [mount "0.1.16"]
-                 [ch.qos.logback/logback-classic "1.2.3"]]
+                 [ch.qos.logback/logback-classic "1.2.3"]
+                 [buddy/buddy-sign "3.1.0"]]
   :repl-options {:init-ns timweb-api.core})

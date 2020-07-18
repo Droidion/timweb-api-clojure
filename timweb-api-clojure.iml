@@ -14,6 +14,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: aero:1.1.6" level="project" />
+    <orderEntry type="library" name="Leiningen: buddy/buddy-core:1.6.0" level="project" />
+    <orderEntry type="library" name="Leiningen: buddy/buddy-sign:3.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: ch.qos.logback/logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Leiningen: ch.qos.logback/logback-core:1.2.3" level="project" />
     <orderEntry type="library" name="Leiningen: cheshire:5.9.0" level="project" />
@@ -34,7 +36,10 @@
     <orderEntry type="library" name="Leiningen: metosin/reitit-core:0.5.2" level="project" />
     <orderEntry type="library" name="Leiningen: metosin/reitit-ring:0.5.2" level="project" />
     <orderEntry type="library" name="Leiningen: mount:0.1.16" level="project" />
+    <orderEntry type="library" name="Leiningen: net.i2p.crypto/eddsa:0.3.0" level="project" />
     <orderEntry type="library" name="Leiningen: nrepl:0.6.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.bouncycastle/bcpkix-jdk15on:1.62" level="project" />
+    <orderEntry type="library" name="Leiningen: org.bouncycastle/bcprov-jdk15on:1.62" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.10.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.44" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/java.jdbc:0.7.11" level="project" />
