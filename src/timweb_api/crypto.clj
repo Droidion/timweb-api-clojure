@@ -1,9 +1,19 @@
 (ns timweb-api.crypto
   (:require [buddy.hashers :as hashers]
             [tick.alpha.api :as t]
-            [buddy.sign.jwt :as jwt]))
+            [buddy.core.nonce :as nonce]
+            [buddy.auth.backends.token :refer [jws-backend]]
+            [buddy.sign.jwt :as jwt]
+            [timweb-api.config :refer [server-config]]))
 
-(def secret "mysupersecret")
+(def secret (nonce/random-bytes 32))
+
+(def auth-backend (jws-backend {:secret secret
+                                :options {:alg :hs512}}))
+
+(defn- get-token-expiration []
+  "Time when token is supposed to expire"
+  (t/+ (t/now) (t/new-duration (:token-longevity server-config) :seconds)))
 
 (defn hash-password [password]
   "Hashes the password to bcrypt+sha512"
@@ -16,5 +26,5 @@
 (defn generate-token [login]
   "Generates new stateless token for user"
   (let [claims {:user (keyword login)
-                :exp (t/+ (t/now) (t/new-duration 3000 :seconds))}]
+                :exp (get-token-expiration)}]
     (jwt/sign claims secret {:alg :hs512})))

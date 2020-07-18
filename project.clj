@@ -17,6 +17,8 @@
                  [aero "1.1.6"]
                  [mount "0.1.16"]
                  [ch.qos.logback/logback-classic "1.2.3"]
+                 [buddy/buddy-core "1.6.0"]
+                 [buddy/buddy-auth "2.2.0"]
                  [buddy/buddy-sign "3.1.0"]
                  [buddy/buddy-hashers "1.4.0"]
                  [metosin/ring-http-response "0.9.1"]

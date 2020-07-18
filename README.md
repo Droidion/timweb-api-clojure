@@ -5,7 +5,7 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
 ## Configuration
 
 - Create `resources/config.edn` file
-- Set up database connection like that:
+- Set up database connection and server config like that:
 
 ```clojure
 {:db {:username      "denis.rodionov"
@@ -13,7 +13,8 @@ Experimental implementation of an API in Clojure ecosystem. For learning purpose
       :port-number   5432
       :database-name "tim"
       :server-name   "localhost"}
- :server {:port 7888}}
+ :server {:port 7888
+          :token-longevity 3000}}
 ```
 
 Mind that if you use the port other than 5432 for the database or other than 7888 for the web server, you should change it in `docker-compose.yml` and `Dockerfile`. 
@@ -41,12 +42,20 @@ $ lein deps
 $ lein run
 ```
 
+## Authentication
+
+We use signed JWT.
+
+Obtain token from `/login`, providing JSON body with `login` and `password` fields.
+
+Use token to make queries, add `Authorization` Header with `Token your-token` value.
+
 ## Roadmap
 - DONE Try reading from DB
 - DONE Try Routing
 - DONE Try JSON response
 - DONE Dockerize
-- TODO Try authentication with Auth0
+- DONE Authentication with JWT
 - TODO Try spec
 - TODO Try unit tests
 - TODO Try inserting, updating and deleting

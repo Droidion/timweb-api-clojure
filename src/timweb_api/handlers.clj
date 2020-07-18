@@ -1,6 +1,7 @@
 (ns timweb-api.handlers
   "Ring handlers"
   (:require [timweb-api.db :as db]
+            [buddy.auth :refer [authenticated? throw-unauthorized]]
             [ring.util.http-response :refer [ok unauthorized]]
             [timweb-api.crypto :as crypto]))
 
