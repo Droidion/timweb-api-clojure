@@ -19,5 +19,5 @@
                        (:password)
                        (crypto/check-password password))]
     (if valid?
-      (ok {:token "therewillbetoken"})
+      (ok {:token (crypto/generate-token login)})
       (unauthorized))))

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: cljc.java-time:0.1.9">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cljc/java-time/cljc.java-time/0.1.9/cljc.java-time-0.1.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -19,5 +19,6 @@
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [buddy/buddy-sign "3.1.0"]
                  [buddy/buddy-hashers "1.4.0"]
-                 [metosin/ring-http-response "0.9.1"]]
+                 [metosin/ring-http-response "0.9.1"]
+                 [tick "0.4.26-alpha"]]
   :repl-options {:init-ns timweb-api.core})

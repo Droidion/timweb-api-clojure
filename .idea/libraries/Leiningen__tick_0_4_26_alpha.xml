@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: tick:0.4.26-alpha">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/tick/tick/0.4.26-alpha/tick-0.4.26-alpha.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
