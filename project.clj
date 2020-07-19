@@ -10,6 +10,9 @@
                  [ring/ring-json "0.5.0"]
                  [metosin/reitit-core "0.5.2"]
                  [metosin/reitit-ring "0.5.2"]
+                 [metosin/reitit-swagger "0.5.5"]
+                 [metosin/reitit-swagger-ui "0.5.5"]
+                 [metosin/reitit-spec "0.5.5"]
                  [org.clojure/java.jdbc "0.7.11"]
                  [org.postgresql/postgresql "42.2.14.jre7"]
                  [hikari-cp "2.12.0"]
@@ -22,5 +25,7 @@
                  [buddy/buddy-sign "3.1.0"]
                  [buddy/buddy-hashers "1.4.0"]
                  [metosin/ring-http-response "0.9.1"]
-                 [tick "0.4.26-alpha"]]
+                 [tick "0.4.26-alpha"]
+                 [com.fasterxml.jackson.core/jackson-core "2.11.1"]
+                 [metosin/spec-tools "0.10.3"]]
   :repl-options {:init-ns timweb-api.core})
