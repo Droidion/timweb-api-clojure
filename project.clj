@@ -27,5 +27,7 @@
                  [metosin/ring-http-response "0.9.1"]
                  [tick "0.4.26-alpha"]
                  [com.fasterxml.jackson.core/jackson-core "2.11.1"]
-                 [metosin/spec-tools "0.10.3"]]
+                 [metosin/spec-tools "0.10.3"]
+                 [metosin/malli "0.0.1-SNAPSHOT"]
+                 [metosin/reitit-malli "0.5.5"]]
   :repl-options {:init-ns timweb-api.core})
