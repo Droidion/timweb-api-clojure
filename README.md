@@ -56,9 +56,9 @@ Use token to make queries, add `Authorization` Header with `Token your-token` va
 - DONE Try JSON response
 - DONE Dockerize
 - DONE Authentication with JWT
+- DONE Swagger
 - TODO Try spec
 - TODO Try unit tests
 - TODO Try inserting, updating and deleting
 - TODO CI/CD
-- TODO Swagger
 - TODO Implement all requests
