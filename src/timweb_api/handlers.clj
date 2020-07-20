@@ -12,7 +12,7 @@
 
 (defn handler-login
   "POST request for user trying to authenticate"
-  [{body :body}]
+  [{body :body-params}]
   (let [login (get body :login)
         password (get body :password)
         valid? (some-> (db/user-by-login login)

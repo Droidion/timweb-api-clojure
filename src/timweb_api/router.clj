@@ -5,16 +5,21 @@
             [reitit.ring.coercion :as coercion]
             [reitit.swagger :as swagger]
             [reitit.swagger-ui :as swagger-ui]
+            [reitit.ring.middleware.muuntaja :as muuntaja]
+            [reitit.ring.middleware.exception :as exception]
+            [reitit.ring.middleware.parameters :as parameters]
             [timweb-api.handlers :as handlers]
             [timweb-api.middleware :as mw]
             [timweb-api.specs :refer [Brand]]
+            [malli.util :as mu]
+            [muuntaja.core :as m]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
 
 (def router
   (r/router
     [["/api"
       ["/brand" {:get {:summary "Get list of all brands"
-                       :parameters {:header [:map [:Authorization string?]]}
+                       :parameters {:headers [:map [:Authorization string?]]}
                        :responses {200 {:body [:vector Brand]}
                                    401 {:description "Token was invalid"}}
                        :handler handlers/handler-brand
@@ -28,9 +33,30 @@
      ["" {:no-doc true}
       ["/swagger.json" {:get (swagger/create-swagger-handler)}]
       ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]]
-    {:data {:coercion   reitit.coercion.malli/coercion
-            :middleware [[wrap-json-body {:keywords? true :bigdecimals? true}]
-                         wrap-json-response
-                         coercion/coerce-exceptions-middleware
-                         coercion/coerce-request-middleware
-                         coercion/coerce-response-middleware]}}))
+    {:data {:coercion   (reitit.coercion.malli/create
+                          {;; set of keys to include in error messages
+                           :error-keys #{#_:type :coercion :in :schema :value :errors :humanized #_:transformed}
+                           ;; schema identity function (default: close all map schemas)
+                           :compile mu/closed-schema
+                           ;; strip-extra-keys (effects only predefined transformers)
+                           :strip-extra-keys true
+                           ;; add/set default values
+                           :default-values true
+                           ;; malli options
+                           :options nil})
+            :muuntaja m/instance
+            :middleware [swagger/swagger-feature
+                         ;; query-params & form-params
+                         parameters/parameters-middleware
+                         ;; content-negotiation
+                         muuntaja/format-negotiate-middleware
+                         ;; encoding response body
+                         muuntaja/format-response-middleware
+                         ;; exception handling
+                         exception/exception-middleware
+                         ;; decoding request body
+                         muuntaja/format-request-middleware
+                         ;; coercing response bodys
+                         coercion/coerce-response-middleware
+                         ;; coercing request parameters
+                         coercion/coerce-request-middleware]}}))

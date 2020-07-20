@@ -7,7 +7,7 @@
 (defn all-brands
   "Retrieves all brands from the database"
   []
-  (let [sqlmap {:select [:id :name_ru :name_en]
+  (let [sqlmap {:select [:id :name_ru :name_en :logo]
                 :from   [:brands]}]
     (jdbc/query db-conn (sql/format sqlmap))))
 
