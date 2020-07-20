@@ -1,4 +1,5 @@
 (ns timweb-api.db.brand
+  "DB operations with brands"
   (:require [clojure.java.jdbc :as jdbc]
             [honeysql.core :as sql]
             [timweb-api.config :refer [db-conn]]))
