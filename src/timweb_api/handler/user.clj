@@ -1,15 +1,7 @@
-(ns timweb-api.handlers
-  "Ring handlers"
-  (:require [timweb-api.db.brand :as brand]
-            [timweb-api.db.user :as user]
-            [buddy.auth :refer [authenticated? throw-unauthorized]]
+(ns timweb-api.handler.user
+  (:require [timweb-api.db.user :as user]
             [ring.util.http-response :refer [ok unauthorized]]
             [timweb-api.crypto :as crypto]))
-
-(defn handler-brand
-  "GET request for all brands"
-  [_]
-  (ok (vec (brand/all-brands))))
 
 (defn handler-login
   "POST request for user trying to authenticate"
