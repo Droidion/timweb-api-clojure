@@ -2,7 +2,7 @@
 
 (def Brand
   [:map
-   [:id number?]
+   [:id {:optional true} number?]
    [:name_ru string?]
    [:name_en string?]
    [:logo string?]])

@@ -3,7 +3,7 @@
             [ring.util.http-response :refer [ok unauthorized]]
             [timweb-api.crypto :as crypto]))
 
-(defn handler-login
+(defn login
   "POST request for user trying to authenticate"
   [{body :body-params}]
   (let [login (get body :login)

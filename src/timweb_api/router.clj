@@ -19,18 +19,25 @@
 (def router
   (r/router
     [["/api"
-      ["/brand" {:get {:summary "Get list of all brands"
+      ["/brand" {:get {:summary    "Get list of all brands"
                        :parameters {:headers [:map [:Authorization string?]]}
-                       :responses {200 {:body [:vector Brand]}
-                                   401 {:description "Token was invalid"}}
-                       :handler handler-brand/handler-brand
+                       :responses  {200 {:body [:vector Brand]}
+                                    401 {:description "Token was invalid"}}
+                       :handler    handler-brand/get-all
+                       :middleware [mw/token-auth mw/auth]}
+                 :put {:summary    "Adds new brand"
+                       :parameters {:headers [:map [:Authorization string?]]
+                                    :body Brand}
+                       :responses  {200 {:body Brand}
+                                    401 {:description "Token was invalid"}}
+                       :handler    handler-brand/add
                        :middleware [mw/token-auth mw/auth]}}]
-      ["/login" {:post {:summary "Try to log in into system with login and password to obtain session token"
+      ["/login" {:post {:summary    "Try to log in into system with login and password to obtain session token"
                         :parameters {:body [:map [:login string?] [:password string?]]}
-                        :responses {200 {:description "User authorized, token generated"
-                                         :body [:map [:token string?]]}
-                                    401 {:description "Combination of login and password could not be authenticated"}}
-                        :handler handler-user/handler-login}}]]
+                        :responses  {200 {:description "User authorized, token generated"
+                                          :body        [:map [:token string?]]}
+                                     401 {:description "Combination of login and password could not be authenticated"}}
+                        :handler    handler-user/login}}]]
      ["" {:no-doc true}
       ["/swagger.json" {:get (swagger/create-swagger-handler)}]
       ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]]
