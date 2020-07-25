@@ -26,7 +26,7 @@
                                     401 {:description "Token was invalid"}}
                        :handler    handler-brand/get-brands
                        :middleware [mw/token-auth mw/auth]}
-                 :put {:summary    "Add new brands"
+                 :put {:summary    "Add new brand"
                        :parameters {:headers AuthHeader
                                     :body    Brand}
                        :responses  {200 {:description "Brand was added"
@@ -34,14 +34,14 @@
                                     401 {:description "Token was invalid"}}
                        :handler    handler-brand/add-brand
                        :middleware [mw/token-auth mw/auth]}}]
-      ["/brands/count" {:get {:summary    "Get the number of brands"
+      ["/brands-count" {:get {:summary    "Get the number of brands"
                        :parameters {:headers AuthHeader}
                        :responses  {200 {:description "Number of brands"
                                          :body        [:map [:count int?]]}
                                     401 {:description "Token was invalid"}}
                        :handler    handler-brand/get-brands-count
                        :middleware [mw/token-auth mw/auth]}}]
-      ["/brand/:brand-id" {:post   {:summary    "Update existing brand"
+      ["/brands/:brand-id" {:post   {:summary    "Update existing brand"
                                     :parameters {:headers AuthHeader
                                                  :path    [:map [:brand-id int?]]
                                                  :body    Brand}
@@ -49,7 +49,7 @@
                                                  401 {:description "Token was invalid"}}
                                     :handler    handler-brand/update-brand
                                     :middleware [mw/token-auth mw/auth]}
-                           :delete {:summary    "Update existing brand"
+                           :delete {:summary    "Delete existing brand"
                                     :parameters {:headers AuthHeader
                                                  :path    [:map [:brand-id int?]]}
                                     :responses  {200 {:description "Brand was deleted"}
