@@ -11,7 +11,7 @@
             [timweb-api.handler.brand :as handler-brand]
             [timweb-api.handler.user :as handler-user]
             [timweb-api.middleware :as mw]
-            [timweb-api.specs :refer [Brand]]
+            [timweb-api.specs :refer [Brand AuthHeader]]
             [malli.util :as mu]
             [muuntaja.core :as m]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
@@ -20,18 +20,35 @@
   (r/router
     [["/api"
       ["/brand" {:get {:summary    "Get list of all brands"
-                       :parameters {:headers [:map [:Authorization string?]]}
-                       :responses  {200 {:body [:vector Brand]}
+                       :parameters {:headers AuthHeader}
+                       :responses  {200 {:description "List of all brands"
+                                         :body        [:vector Brand]}
                                     401 {:description "Token was invalid"}}
-                       :handler    handler-brand/get-all
+                       :handler    handler-brand/get-brands
                        :middleware [mw/token-auth mw/auth]}
-                 :put {:summary    "Adds new brand"
-                       :parameters {:headers [:map [:Authorization string?]]
-                                    :body Brand}
-                       :responses  {200 {:body Brand}
+                 :put {:summary    "Add new brands"
+                       :parameters {:headers AuthHeader
+                                    :body    Brand}
+                       :responses  {200 {:description "Brand was added"
+                                         :body        Brand}
                                     401 {:description "Token was invalid"}}
-                       :handler    handler-brand/add
+                       :handler    handler-brand/add-brand
                        :middleware [mw/token-auth mw/auth]}}]
+      ["/brand/:brand-id" {:post   {:summary    "Update existing brand"
+                                    :parameters {:headers AuthHeader
+                                                 :path    [:map [:brand-id int?]]
+                                                 :body    Brand}
+                                    :responses  {200 {:description "Brand was updated"}
+                                                 401 {:description "Token was invalid"}}
+                                    :handler    handler-brand/update-brand
+                                    :middleware [mw/token-auth mw/auth]}
+                           :delete {:summary    "Update existing brand"
+                                    :parameters {:headers AuthHeader
+                                                 :path    [:map [:brand-id int?]]}
+                                    :responses  {200 {:description "Brand was deleted"}
+                                                 401 {:description "Token was invalid"}}
+                                    :handler    handler-brand/delete-brand
+                                    :middleware [mw/token-auth mw/auth]}}]
       ["/login" {:post {:summary    "Try to log in into system with login and password to obtain session token"
                         :parameters {:body [:map [:login string?] [:password string?]]}
                         :responses  {200 {:description "User authorized, token generated"
