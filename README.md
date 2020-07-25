@@ -1,5 +1,7 @@
 # API for TIM Group implemented in Clojure
 
+![Unit tests](https://github.com/Droidion/timweb-api-clojure/workflows/Unit%20tests/badge.svg)
+
 Experimental implementation of an API in Clojure ecosystem. For learning purposes.
 
 ## Configuration
