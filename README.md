@@ -64,3 +64,5 @@ Use token to make queries, add `Authorization` Header with `Token your-token` va
 - TODO Try unit tests
 - TODO CI/CD
 - TODO Implement all requests
+- TODO Add Sentry
+- TODO Better exception handling

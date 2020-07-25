@@ -30,11 +30,3 @@
   (let [claims {:user (keyword login)
                 :exp (get-token-expiration)}]
     (jwt/sign claims secret {:alg :hs512})))
-
-(s/fdef hash-password
-        :args (s/cat :password string?)
-        :ret string?)
-
-(s/fdef check-password
-        :args (s/cat :hashed-password string? :plain-password string?)
-        :ret boolean?)

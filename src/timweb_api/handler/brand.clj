@@ -1,5 +1,6 @@
 (ns timweb-api.handler.brand
   (:require [timweb-api.db.brand :as db]
+            [timweb-api.cache :as cache]
             [ring.util.http-response :refer [ok bad-request]]))
 
 (defn get-brands
@@ -7,9 +8,15 @@
   [_]
   (ok (vec (db/get-brands))))
 
+(defn get-brands-count
+  "GET Number of brands"
+  [_]
+  (ok {:count @cache/brands-count}))
+
 ;; returns full brand with id
 (defn add-brand
   [{body :body-params}]
+  (cache/update-brands-count)
   (ok (first (db/add-brand body))))
 
 (defn update-brand
@@ -25,6 +32,7 @@
 
 (defn delete-brand
   [{path :path-params}]
+  (cache/update-brands-count)
   (let [number-of-deleted-rows (->> :brand-id
                                     (get path)
                                     (Integer/parseInt)

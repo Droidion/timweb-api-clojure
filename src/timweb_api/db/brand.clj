@@ -11,6 +11,14 @@
                 :from   [:brands]}]
     (jdbc/query db-conn (sql/format sqlmap))))
 
+(defn get-brands-count
+  "Counts the number of brands"
+  []
+  (let [sqlmap {:select [:%count.*]
+                :as [:count]
+                :from   [:brands]}]
+    (jdbc/query db-conn (sql/format sqlmap))))
+
 (defn add-brand
   "Adds new brand"
   [brand]

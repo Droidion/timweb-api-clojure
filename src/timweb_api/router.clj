@@ -19,7 +19,7 @@
 (def router
   (r/router
     [["/api"
-      ["/brand" {:get {:summary    "Get list of all brands"
+      ["/brands" {:get {:summary    "Get list of all brands"
                        :parameters {:headers AuthHeader}
                        :responses  {200 {:description "List of all brands"
                                          :body        [:vector Brand]}
@@ -33,6 +33,13 @@
                                          :body        Brand}
                                     401 {:description "Token was invalid"}}
                        :handler    handler-brand/add-brand
+                       :middleware [mw/token-auth mw/auth]}}]
+      ["/brands/count" {:get {:summary    "Get the number of brands"
+                       :parameters {:headers AuthHeader}
+                       :responses  {200 {:description "Number of brands"
+                                         :body        [:map [:count int?]]}
+                                    401 {:description "Token was invalid"}}
+                       :handler    handler-brand/get-brands-count
                        :middleware [mw/token-auth mw/auth]}}]
       ["/brand/:brand-id" {:post   {:summary    "Update existing brand"
                                     :parameters {:headers AuthHeader
