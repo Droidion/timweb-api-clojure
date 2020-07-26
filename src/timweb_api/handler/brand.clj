@@ -11,7 +11,7 @@
 (defn get-brands-count
   "GET Number of brands"
   [_]
-  (ok {:count @cache/brands-count}))
+  (ok {:count (:brands-count @cache/status)}))
 
 ;; returns full brand with id
 (defn add-brand

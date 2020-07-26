@@ -60,6 +60,8 @@ Use token to make queries, add `Authorization` Header with `Token your-token` va
 - DONE Authentication with JWT
 - DONE Swagger
 - DONE Try inserting, updating and deleting
+- TODO Endpoint for caches
+- TODO Auth with Swagger
 - TODO Try spec
 - TODO Try unit tests
 - TODO CI/CD

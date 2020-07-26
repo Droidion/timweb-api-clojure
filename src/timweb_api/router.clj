@@ -9,9 +9,10 @@
             [reitit.ring.middleware.exception :as exception]
             [reitit.ring.middleware.parameters :as parameters]
             [timweb-api.handler.brand :as handler-brand]
+            [timweb-api.handler.status :as handler-status]
             [timweb-api.handler.user :as handler-user]
             [timweb-api.middleware :as mw]
-            [timweb-api.specs :refer [Brand AuthHeader]]
+            [timweb-api.specs :refer [Brand AuthHeader Status]]
             [malli.util :as mu]
             [muuntaja.core :as m]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
@@ -34,13 +35,6 @@
                                     401 {:description "Token was invalid"}}
                        :handler    handler-brand/add-brand
                        :middleware [mw/token-auth mw/auth]}}]
-      ["/brands-count" {:get {:summary    "Get the number of brands"
-                       :parameters {:headers AuthHeader}
-                       :responses  {200 {:description "Number of brands"
-                                         :body        [:map [:count int?]]}
-                                    401 {:description "Token was invalid"}}
-                       :handler    handler-brand/get-brands-count
-                       :middleware [mw/token-auth mw/auth]}}]
       ["/brands/:brand-id" {:post   {:summary    "Update existing brand"
                                     :parameters {:headers AuthHeader
                                                  :path    [:map [:brand-id int?]]
@@ -56,6 +50,13 @@
                                                  401 {:description "Token was invalid"}}
                                     :handler    handler-brand/delete-brand
                                     :middleware [mw/token-auth mw/auth]}}]
+      ["/status" {:get {:summary    "Cached statistics"
+                        :parameters {:headers AuthHeader}
+                        :responses  {200 {:description "Statistics values"
+                                          :body        Status}
+                                     401 {:description "Token was invalid"}}
+                        :handler    handler-status/get-status
+                        :middleware [mw/token-auth mw/auth]}}]
       ["/login" {:post {:summary    "Try to log in into system with login and password to obtain session token"
                         :parameters {:body [:map [:login string?] [:password string?]]}
                         :responses  {200 {:description "User authorized, token generated"

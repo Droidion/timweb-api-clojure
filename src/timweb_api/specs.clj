@@ -10,3 +10,7 @@
 (def AuthHeader
   [:map
    [:Authorization string?]])
+
+(def Status
+  [:map
+   [:brands-count int?]])
