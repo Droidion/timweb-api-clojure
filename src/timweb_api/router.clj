@@ -8,9 +8,10 @@
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [reitit.ring.middleware.exception :as exception]
             [reitit.ring.middleware.parameters :as parameters]
-            [timweb-api.handler.brand :as handler-brand]
-            [timweb-api.handler.status :as handler-status]
-            [timweb-api.handler.user :as handler-user]
+            [timweb-api.handler.api.brand :as handler-brand]
+            [timweb-api.handler.api.status :as handler-status]
+            [timweb-api.handler.api.user :as handler-user]
+            [timweb-api.handler.html :as handler-html]
             [timweb-api.middleware :as mw]
             [timweb-api.specs :refer [Brand AuthHeader Status]]
             [malli.util :as mu]
@@ -64,6 +65,7 @@
                                      401 {:description "Combination of login and password could not be authenticated"}}
                         :handler    handler-user/login}}]]
      ["" {:no-doc true}
+      ["/" {:get {:handler handler-html/index}}]
       ["/swagger.json" {:get (swagger/create-swagger-handler)}]
       ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]]
     {:data {:coercion   (reitit.coercion.malli/create

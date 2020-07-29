@@ -1,4 +1,4 @@
-(ns timweb-api.handler.status
+(ns timweb-api.handler.api.status
   (:require [timweb-api.cache :as cache]
             [ring.util.http-response :refer [ok]]))
 
