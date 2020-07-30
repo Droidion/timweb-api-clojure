@@ -8,6 +8,8 @@
             [timweb-api.config :refer [server-config]])
   (:gen-class))
 
+(defonce server-handler (atom nil))
+
 (def app
   "Web app"
   (r/ring-handler
@@ -15,17 +17,25 @@
     (r/create-default-handler)))
 
 
-(defn- server
+(defn stop-server
+  "Helper function to stop the server when the component's stop function is called"
+  []
+  (when @server-handler
+    ((.stop @server-handler)
+     (reset! server-handler nil))))
+
+(defn- start-server
   "Starts ring web server"
   []
   (mount/start)
   (cache/update-all-caches)
   (styles/compile-styles)
-  (let [port (:port server-config)]
-    (println (format "Starting web server on port %s" port))
-    (run-jetty app {:join? false :port port})))
+  (let [port (:port server-config)
+        handler (run-jetty app {:join? false :port port})]
+    (println (format "Started web server on port %s" port))
+    (reset! server-handler handler)))
 
 (defn -main
   "Starts the program"
   [& args]
-  (server))
+  (start-server))
