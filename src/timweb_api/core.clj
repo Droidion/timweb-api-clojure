@@ -8,6 +8,7 @@
             [timweb-api.config :refer [server-config]])
   (:gen-class))
 
+;; Atom for storing jetty server handler
 (defonce server-handler (atom nil))
 
 (def app
@@ -33,6 +34,7 @@
   (let [port (:port server-config)
         handler (run-jetty app {:join? false :port port})]
     (println (format "Started web server on port %s" port))
+    ;; Saving server handler to the atom to be able to close it
     (reset! server-handler handler)))
 
 (defn -main
