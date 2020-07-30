@@ -4,13 +4,13 @@
             [timweb-api.template.styles :as styles]))
 
 (defn header []
-  (html [:header]))
+  (html [:header "asdasd"]))
 
 (defn application [title & content]
   (html5 [:head
           [:title title]
           (include-css "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
-          [:style (styles/header)]
+          (include-css "assets/styles.css")
           [:body
            (header)
            [:div content]]]))

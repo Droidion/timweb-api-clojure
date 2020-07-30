@@ -1,3 +1,4 @@
+.DS_Store
 /target
 /classes
 /checkouts
@@ -11,3 +12,4 @@ pom.xml.asc
 .hgignore
 .hg/
 resources/config.edn
+resources/public/styles.css

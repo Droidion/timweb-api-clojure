@@ -3,6 +3,7 @@
             [reitit.ring :as r]
             [timweb-api.router :as router]
             [timweb-api.cache :as cache]
+            [timweb-api.template.styles :as styles]
             [mount.core :as mount]
             [timweb-api.config :refer [server-config]])
   (:gen-class))
@@ -19,6 +20,7 @@
   []
   (mount/start)
   (cache/update-all-caches)
+  (styles/compile-styles)
   (let [port (:port server-config)]
     (println (format "Starting web server on port %s" port))
     (run-jetty app {:join? false :port port})))
