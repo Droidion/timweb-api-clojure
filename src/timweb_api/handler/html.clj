@@ -1,5 +1,5 @@
 (ns timweb-api.handler.html
-  (:require [timweb-api.template.index :as template]))
+  (:require [timweb-api.template.pages :as template]))
 
 (def http-header {"Content-Type" "text/html; charset=UTF-8"})
 
