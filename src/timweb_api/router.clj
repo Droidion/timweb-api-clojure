@@ -66,6 +66,7 @@
                         :handler    handler-user/login}}]]
      ["" {:no-doc true}
       ["/" {:get {:handler handler-html/index}}]
+      ["/brands" {:get {:handler handler-html/brands}}]
       ["/assets/*" (r/create-resource-handler)]
       ["/swagger.json" {:get (swagger/create-swagger-handler)}]
       ["/api-docs/*" {:get (swagger-ui/create-swagger-ui-handler)}]]]

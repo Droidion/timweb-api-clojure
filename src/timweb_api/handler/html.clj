@@ -7,4 +7,10 @@
   [_]
   {:status 200
    :headers http-header
-   :body (template/render)})
+   :body (template/index)})
+
+(defn brands
+  [_]
+  {:status 200
+   :headers http-header
+   :body (template/brands)})

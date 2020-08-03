@@ -3,7 +3,11 @@
             [timweb-api.template.partials :as partials]
             [hiccup.core :refer [html]]))
 
-(defn render []
+(defn index []
+  (partials/application "TIM Group" (html [:h1 "Деловые игры и тренинги"]
+                                          [:p.caption "Финансы. Переговоры. Компьютерное моделирование."])))
+
+(defn brands []
   (partials/application "Brands" (html [:table.table
                                         [:thead
                                          [:tr
