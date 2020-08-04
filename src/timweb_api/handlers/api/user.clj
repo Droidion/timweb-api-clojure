@@ -1,4 +1,4 @@
-(ns timweb-api.handler.api.user
+(ns timweb-api.handlers.api.user
   (:require [timweb-api.db.user :as user]
             [ring.util.http-response :refer [ok unauthorized]]
             [timweb-api.crypto :as crypto]))

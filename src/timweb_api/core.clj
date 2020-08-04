@@ -3,7 +3,7 @@
             [reitit.ring :as r]
             [timweb-api.router :as router]
             [timweb-api.cache :as cache]
-            [timweb-api.template.styles :as styles]
+            [timweb-api.styles.core :as styles]
             [mount.core :as mount]
             [timweb-api.config :refer [server-config]])
   (:gen-class))

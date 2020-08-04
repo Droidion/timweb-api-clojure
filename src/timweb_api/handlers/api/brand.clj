@@ -1,4 +1,4 @@
-(ns timweb-api.handler.api.brand
+(ns timweb-api.handlers.api.brand
   (:require [timweb-api.db.brand :as db]
             [timweb-api.cache :as cache]
             [ring.util.http-response :refer [ok bad-request]]))

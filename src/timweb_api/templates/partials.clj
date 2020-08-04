@@ -1,4 +1,4 @@
-(ns timweb-api.template.partials
+(ns timweb-api.templates.partials
   (:require [hiccup.page :refer [html5 include-css]]
             [hiccup.core :refer [html]]
             [timweb-api.template.styles :as styles]))
